@@ -8,13 +8,19 @@ class homePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        toolbarHeight: 80,
+        elevation: 0,
+        backgroundColor: Colors.white10,
         title: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Image.asset(
-              'assets/images/logo.png',
-              fit: BoxFit.contain,
-              height: 60,
+            Container(
+              padding: const EdgeInsets.fromLTRB(0, 10, 0, 10),
+              child: Image.asset(
+                'assets/images/logo.png',
+                fit: BoxFit.contain,
+                height: 60,
+              ),
             ),
           ],
         ),
@@ -29,6 +35,12 @@ class homePage extends StatelessWidget {
                 Get.offNamed("/");
               },
               child: const Text("To loading Page"),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                Get.offNamed("/http_parsing");
+              },
+              child: const Text("To http page"),
             ),
           ],
         ),
