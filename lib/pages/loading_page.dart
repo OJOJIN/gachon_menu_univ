@@ -26,7 +26,7 @@ class loadingPage extends StatelessWidget {
               height: 100,
             ),
             Container(height: 30),
-            const SpinKitFadingCube(color: Colors.blue, size: 30),
+            const SpinKitThreeBounce(color: Colors.blue, size: 30),
           ],
         ),
       ),
