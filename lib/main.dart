@@ -16,8 +16,8 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       initialRoute: "/",
       getPages: [
-        GetPage(name: "/", page: () => const loadingPage()),
-        GetPage(name: "/home", page: () => const homePage(), transition: Transition.fadeIn),
+        GetPage(name: "/", page: () => loadingPage()),
+        GetPage(name: "/home", page: () => homePage(), transition: Transition.fadeIn),
       ],
     );
   }
