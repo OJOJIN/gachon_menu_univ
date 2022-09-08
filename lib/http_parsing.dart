@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:html/parser.dart' show parse;
 
-void _getPageHtml() async {
-  List dataList = [];
-  var url = Uri.parse('https://www.gachon.ac.kr/kor/7347/subview.do');
+Future<Map<dynamic, dynamic>> getPageHtml() async {
+  var dataList = {};
+  final url = Uri.parse('https://www.gachon.ac.kr/kor/7347/subview.do');
   final response = await http.get(url);
   if (response.statusCode == 200) {
     var document = parse(response.body);
@@ -13,18 +13,24 @@ void _getPageHtml() async {
         .getElementsByTagName('tbody')[0]
         .getElementsByTagName('tr')) {
       for (var elementTh in element.getElementsByTagName('th')) {
-        dataList.add(elementTh.text.replaceAll(new RegExp('\\s+'), ''));
+        String menu = element.getElementsByTagName('td')[1].text;
+        if (menu.contains('\n\n')) {
+          menu = menu.substring(0, menu.indexOf('\n\n'));
+          var menuData = menu.split('\n');
+          dataList[elementTh.text.replaceAll(RegExp('\\s+'), '')] = menuData;
+        }
       }
     }
-    //print(document.getElementsByTagName('table')[0].getElementsByTagName('tr'));
   } else {
     throw Exception();
   }
-  print(dataList);
+  return dataList;
 }
 
 class MyWidget extends StatelessWidget {
-  const MyWidget({super.key});
+  MyWidget({super.key});
+
+  var dataList = {};
 
   @override
   Widget build(BuildContext context) {
@@ -34,8 +40,10 @@ class MyWidget extends StatelessWidget {
       ),
       body: Center(
         child: ElevatedButton(
-          onPressed: _getPageHtml,
-          child: const Text('Call API'),
+          onPressed: () async {
+            dataList = await getPageHtml();
+          },
+          child: Text('${dataList["2022.09.05(월)"]}'),
         ),
       ),
     );

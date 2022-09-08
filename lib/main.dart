@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:gachon_univ_menu/pages/home_page.dart';
 import 'package:gachon_univ_menu/pages/loading_page.dart';
 import 'package:get/get.dart';
-
 import 'http_parsing.dart';
 
 void main() {
@@ -19,8 +18,14 @@ class MyApp extends StatelessWidget {
       initialRoute: "/",
       getPages: [
         GetPage(name: "/", page: () => const loadingPage()),
-        GetPage(name: "/home", page: () => const homePage(), transition: Transition.fadeIn),
-        GetPage(name: "/http_parsing", page: () => const MyWidget(), transition: Transition.fadeIn),
+        GetPage(
+            name: "/home",
+            page: () => const homePage(),
+            transition: Transition.fadeIn),
+        GetPage(
+            name: "/http_parsing",
+            page: () => MyWidget(),
+            transition: Transition.fadeIn),
       ],
     );
   }
