@@ -36,19 +36,53 @@ class homePage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
+              margin: const EdgeInsets.fromLTRB(0, 0, 0, 18),
+              decoration: BoxDecoration(
+                color: Colors.black12,
+                borderRadius: BorderRadius.circular(16.0),
+              ),
               padding: const EdgeInsets.all(10),
-              child: const Text(
-                "오늘의 메뉴(비전타워)",
-                style: TextStyle(fontSize: 23, color: Colors.blueAccent, fontWeight: FontWeight.bold),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: const [
+                  Text(
+                    "  오늘의 메뉴(비전타워)",
+                    style: TextStyle(fontSize: 23, color: Colors.black, fontWeight: FontWeight.bold),
+                  ),
+                  weekMenuBox(),
+                ],
               ),
             ),
-            const weekMenuBox(),
+            Container(
+              margin: const EdgeInsets.fromLTRB(0, 0, 0, 18),
+              decoration: BoxDecoration(
+                color: Colors.black12,
+                borderRadius: BorderRadius.circular(16.0),
+              ),
+              padding: const EdgeInsets.all(10),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: const [
+                  Text(
+                    "  오늘의 메뉴(교육대학원)",
+                    style: TextStyle(fontSize: 23, color: Colors.black, fontWeight: FontWeight.bold),
+                  ),
+                  weekMenuBox(),
+                ],
+              ),
+            ),
             const SizedBox(height: 30, width: double.infinity),
             ElevatedButton(
               onPressed: () {
                 Get.offNamed("/");
               },
               child: const Text("To loading Page"),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                Get.offNamed("/http_parsing");
+              },
+              child: const Text("To http page"),
             ),
           ],
         ),

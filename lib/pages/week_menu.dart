@@ -8,7 +8,7 @@ class weekMenuBox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.fromLTRB(5, 5, 0, 5),
+      margin: const EdgeInsets.fromLTRB(0, 5, 0, 5),
       height: 240.0,
       child: ListView(
         scrollDirection: Axis.horizontal,
@@ -37,15 +37,9 @@ class weekMenuList extends StatelessWidget {
         color: Colors.white,
         border: Border.all(
           color: Colors.black12,
+          width: 3,
         ),
         borderRadius: BorderRadius.circular(16.0),
-        boxShadow: const [
-          BoxShadow(
-            color: Colors.black45,
-            offset: Offset(3.0, 3.0), //(x,y)
-            blurRadius: 3.0,
-          ),
-        ],
       ),
       margin: const EdgeInsets.fromLTRB(0, 0, 7, 0),
       child: ListView.builder(

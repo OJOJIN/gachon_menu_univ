@@ -3,6 +3,8 @@ import 'package:gachon_univ_menu/pages/home_page.dart';
 import 'package:gachon_univ_menu/pages/loading_page.dart';
 import 'package:get/get.dart';
 
+import 'http_parsing.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -16,8 +18,9 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       initialRoute: "/",
       getPages: [
-        GetPage(name: "/", page: () => loadingPage()),
-        GetPage(name: "/home", page: () => homePage(), transition: Transition.fadeIn),
+        GetPage(name: "/", page: () => const loadingPage()),
+        GetPage(name: "/home", page: () => const homePage(), transition: Transition.fadeIn),
+        GetPage(name: "/http_parsing", page: () => const MyWidget(), transition: Transition.fadeIn),
       ],
     );
   }
